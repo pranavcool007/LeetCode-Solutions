@@ -24,13 +24,15 @@ public:
             TreeNode* node = it.first;
             int level = it.second;
             
-            mpp[level] = node->val;
-            
-            if(node->left){
-                q.push({node->left,level+1});
+            if(mpp.find(level) == mpp.end()){
+                mpp[level] = node->val;
             }
+            
             if(node->right){
                 q.push({node->right,level+1});
+            }
+            if(node->left){
+                q.push({node->left,level+1});
             }
         }
         for(auto temp: mpp){
