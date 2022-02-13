@@ -18,8 +18,8 @@ public:
         lh = leftheight(root->left);
         rh = rightheight(root->right);
         
-        if(lh == rh) return pow(2,lh+1)-1;
-        
+        if(lh == rh) return (1<<(1+lh))-1;             // 1*(2^lh+1)
+         
         return 1 + countNodes(root->left) + countNodes(root->right);
     }
     
