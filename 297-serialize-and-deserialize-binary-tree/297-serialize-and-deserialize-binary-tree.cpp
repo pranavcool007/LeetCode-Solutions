@@ -26,14 +26,14 @@ public:
                  ans.append(to_string(node->left->val));
                  ans.append(",");
              }else{
-                 ans = ans+"#"+",";
+                 ans.append("#,");
              }
              if(node->right){
                  q.push(node->right);
                  ans.append(to_string(node->right->val));
                  ans.append(",");
              }else{
-                 ans = ans + "#"+",";
+                 ans.append("#,");
              }
          }
         return ans;
