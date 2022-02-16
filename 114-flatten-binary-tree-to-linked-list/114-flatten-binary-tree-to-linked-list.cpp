@@ -16,7 +16,7 @@ public:
         stack<TreeNode*> s;
         s.push(root);
         while(!s.empty()){
-            if(root == NULL) return;
+            if(root == NULL) return;        // imp condition (failed 1st time)
             TreeNode* node = s.top();
             s.pop();
             
