@@ -8,7 +8,7 @@ public:
             if(mpp.find(rem) != mpp.end()){
                 ans.push_back(mpp[rem]);
                 ans.push_back(i);
-                break;
+                break;                     // ques saying only one sol is there
             }else{
                 mpp[nums[i]] = i;
             }
