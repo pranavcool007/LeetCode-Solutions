@@ -2,7 +2,7 @@ class Solution {
 public:
     // O(N) Time compl and O(N) Space compl
     vector<int> productExceptSelf(vector<int>& nums) {
-        int n = nums.size();
+/*      int n = nums.size();
         vector<int> left(n);
         vector<int> right(n);
         vector<int> ans(n);
@@ -31,6 +31,32 @@ public:
             ans[i] = prod;
         }
     }
+        return ans;                           */
+        
+        int n = nums.size();
+        vector<int> ans(n);
+        int rprod = 1;
+        
+        ans[0] = nums[0];
+        for(int i=1; i<n; ++i){
+            int temp = ans[i-1]*nums[i];
+            ans[i] = temp;
+        }
+        
+        for(int i=n-1; i>0; --i){
+            if(i == n-1){
+                ans[i] = ans[i-1];
+                rprod *= nums[i];
+            }
+            else{
+                int temp = rprod*ans[i-1];
+                ans[i] = temp;
+                rprod *= nums[i];
+            }
+            
+        }
+        ans[0] = rprod;
         return ans;
+        
 }
 };
