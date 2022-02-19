@@ -8,7 +8,7 @@ public:
             ++mpp[nums[i]];
         }
         
-        for(int j=1; j<=nums.size(); ++j){
+        for(int j=1; j<=nums.size(); ++j){  // check [1,n] ele present in map 
             if(mpp.find(j) == mpp.end()){
                 ans.push_back(j);
             }
