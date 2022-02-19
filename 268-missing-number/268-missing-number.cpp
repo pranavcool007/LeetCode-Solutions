@@ -8,8 +8,8 @@ public:
             ++mpp[nums[i]];
         }
         
-        for(int i =0; i<=nums.size(); ++i){
-            if(mpp.find(i) == mpp.end()){
+        for(int i =0; i<=nums.size(); ++i){  //find each value from[0,n] in map
+            if(mpp.find(i) == mpp.end()){   
                 ans = i;
                 break;
             }
