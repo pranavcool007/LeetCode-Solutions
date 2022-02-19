@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // O(N) Time compl and O(N) Space compl
     vector<int> productExceptSelf(vector<int>& nums) {
         int n = nums.size();
         vector<int> left(n);
