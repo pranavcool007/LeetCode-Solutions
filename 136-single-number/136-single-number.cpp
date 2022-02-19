@@ -8,7 +8,7 @@ public:
             ++mpp[nums[i]];
         }
         
-        for(auto i: mpp){
+        for(auto &i: mpp){
             if(i.second == 1){
                 ans = i.first;
             }
