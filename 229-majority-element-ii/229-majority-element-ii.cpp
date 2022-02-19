@@ -7,7 +7,7 @@ public:
             ++mpp[nums[i]];
         }
         for(auto i: mpp){
-            if(i.second > int(nums.size()/3)){  // check if count > n/2(floor)
+            if(i.second > int(nums.size()/3)){  // check if count > n/3(floor)
                 ans.push_back(i.first);
             }
         }
