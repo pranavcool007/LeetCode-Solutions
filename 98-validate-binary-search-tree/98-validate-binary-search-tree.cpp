@@ -22,7 +22,7 @@ public:
         inorder_tr(root,inorder);
         
         for(int i=0; i<inorder.size()-1; ++i){
-            if(inorder[i]>=inorder[i+1]){
+            if(inorder[i]>=inorder[i+1]){       // if 2 values are same then also its not bst
                 return false;
             }
         }
