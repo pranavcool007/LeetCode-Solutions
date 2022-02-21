@@ -29,16 +29,16 @@ public:
                 return root;
             }
             // 1 child
-            else if(root->left == NULL){
-                TreeNode* temp = root->right;
+            else if(root->left == NULL or root->right == NULL){
+                TreeNode* temp = root->right?root->right:root->left;
                 delete root;
                 return temp;
             }
-            else if(root->right == NULL){
-                TreeNode* temp = root->left;
-                delete root;
-                return temp;
-            }
+            // else if(root->right == NULL){
+            //     TreeNode* temp = root->left;
+            //     delete root;
+            //     return temp;
+            // }
             // 2 children
             else{
                 TreeNode* temp = root->right;
