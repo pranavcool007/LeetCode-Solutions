@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    // brute force method
     void inorder(TreeNode* root,vector<int> & inor){
         if(root == NULL){
             return;
@@ -21,7 +22,6 @@ public:
     }
     
     bool findTarget(TreeNode* root, int k) {
-        // brute force method
         vector<int> inor;   // will contain sorted inorder traversal
         inorder(root,inor);
         
