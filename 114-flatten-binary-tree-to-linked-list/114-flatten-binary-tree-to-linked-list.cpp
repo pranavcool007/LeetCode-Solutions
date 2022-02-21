@@ -14,9 +14,10 @@ public:
     void flatten(TreeNode* root) {
         // stack approach
         stack<TreeNode*> s;
+        if(root == NULL) return;        // imp condition (failed 1st time)
         s.push(root);
         while(!s.empty()){
-            if(root == NULL) return;        // imp condition (failed 1st time)
+
             TreeNode* node = s.top();
             s.pop();
             
