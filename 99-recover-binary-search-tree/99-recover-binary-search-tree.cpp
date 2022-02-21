@@ -40,7 +40,7 @@ public:
         if(first and last){
             swap(first->val,last->val);
         }
-        else if(first and middle){
+        else {
             swap(first->val,middle->val);
         }
     }
