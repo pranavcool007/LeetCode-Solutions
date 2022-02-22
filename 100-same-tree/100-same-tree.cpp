@@ -14,7 +14,7 @@ public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         // preorder traversal with checking each node
         
-        if(p == NULL or q == NULL){
+        if(p == NULL or q == NULL){  // base case
             return (p==q);
         }
         if(p->val != q->val){
