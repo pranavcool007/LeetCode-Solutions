@@ -17,7 +17,7 @@ public:
         int lh = minDepth(root->left);
         int rh = minDepth(root->right);
         
-        if(lh == 0 or rh == 0){
+        if(lh == 0 or rh == 0){   // we have to take care of 0 height returned
             return 1+(lh?lh:rh);
         }
         return (1+min(lh,rh));
