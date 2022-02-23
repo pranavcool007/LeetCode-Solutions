@@ -22,9 +22,9 @@ public:
         
         if(i == pl.size() or pl[i] > bound) return NULL;
         
-        TreeNode* root = new TreeNode(pl[i++]);
-        root->left = buildBST(pl,i,root->val);
-        root->right = buildBST(pl,i,bound);
+        TreeNode* root = new TreeNode(pl[i++]);    // make root 
+        root->left = buildBST(pl,i,root->val);     // make lsb and rsb , then connect it
+        root->right = buildBST(pl,i,bound);        // to the root
         
         return root;
     }
