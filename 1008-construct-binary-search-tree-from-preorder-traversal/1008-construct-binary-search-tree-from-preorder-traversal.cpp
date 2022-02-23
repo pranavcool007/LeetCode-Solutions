@@ -18,9 +18,9 @@ public:
         return root;
     }
     
-    TreeNode* buildBST(vector<int> &pl,int &i,int bound){
+    TreeNode* buildBST(vector<int> &pl,int &i,int bound){ // pl = preorder_list
         
-        if(i == pl.size() or pl[i] > bound) return NULL;
+        if(i == pl.size() or pl[i] > bound) return NULL;  // no ele to insert
         
         TreeNode* root = new TreeNode(pl[i++]);    // make root 
         root->left = buildBST(pl,i,root->val);     // make lsb and rsb , then connect it
