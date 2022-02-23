@@ -5,7 +5,7 @@ public:
         
         for(auto i: arr){
             if(i < 0){
-                int rem = (k+(i%k))%k;
+                int rem = (k+(i%k))%k;    // done to get +ve rem for -ve nos
                 ++mpp[rem];
             }
             else{
