@@ -5,7 +5,7 @@ public:
         int ans = 0;
         int i = -1;
         int j = -1;
-        while(i<int(nums.size()-1)){
+        while(i < (int)nums.size()-1){
             ++i;
             if(nums[i] == 0){
                 count++;
