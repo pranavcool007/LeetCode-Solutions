@@ -75,9 +75,9 @@ vector<long long> printFirstNegativeInteger(long long int Arr[],
             if(q.empty()) ans.push_back(0);
             else{
                 ans.push_back(q.front());
-                if(q.front() == Arr[i])
-                    q.pop();
             }
+            if(q.front() == Arr[i])
+                    q.pop();
             i++;j++;
         }
     }
