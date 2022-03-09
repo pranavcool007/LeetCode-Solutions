@@ -32,55 +32,55 @@ int main() {
 vector<long long> printFirstNegativeInteger(long long int Arr[],
                                              long long int N, long long int K) {
         
-        // vector<long long > ans;
-        // queue<long long> q;
-        // long long i,j = 0;
+        vector<long long > ans;
+        queue<long long> q;
+        long long i=0,j = 0;
         
-        // while(j<N){
-        //     if(Arr[j] < 0){
-        //         q.push(Arr[j]);
-        //     }
-            
-        //     if(j-i+1 < K){
-        //         ++j;
-        //     }
-            
-        //     else if(j-i+1 == K){
-        //         if(q.size() == 0){
-        //             ans.push_back(0);
-        //         }
-        //         else{
-        //             ans.push_back(q.front());
-        //         }
-                
-        //         if(q.front() == Arr[i]){
-        //             q.pop();
-        //         }
-        //         ++i;
-        //         ++j;
-        //     }
-        // }
-        // return ans;
-    queue<long long> q;
-    vector<long long> ans;
-    long long i = 0,j = 0;
-    
-    while(j<N){
-        if(Arr[j]<0)
-            q.push(Arr[j]);
-        if(j-i+1 < K){
-            j++;
-        }
-        else if(j-i+1 == K){
-            if(q.size() == 0) ans.push_back(0);
-            else{
-                ans.push_back(q.front());
+        while(j<N){
+            if(Arr[j] < 0){
+                q.push(Arr[j]);
             }
-            if(q.front() == Arr[i])
+            
+            if(j-i+1 < K){
+                ++j;
+            }
+            
+            else if(j-i+1 == K){
+                if(q.size() == 0){
+                    ans.push_back(0);
+                }
+                else{
+                    ans.push_back(q.front());
+                }
+                
+                if(q.front() == Arr[i]){
                     q.pop();
-            i++;j++;
+                }
+                ++i;
+                ++j;
+            }
         }
-    }
-    return ans;
+        return ans;
+    // queue<long long> q;
+    // vector<long long> ans;
+    // long long i = 0,j = 0;
+    
+    // while(j<N){
+    //     if(Arr[j]<0)
+    //         q.push(Arr[j]);
+    //     if(j-i+1 < K){
+    //         j++;
+    //     }
+    //     else if(j-i+1 == K){
+    //         if(q.size() == 0) ans.push_back(0);
+    //         else{
+    //             ans.push_back(q.front());
+    //         }
+    //         if(q.front() == Arr[i])
+    //                 q.pop();
+    //         i++;j++;
+    //     }
+    // }
+    // return ans;
 }
                                                  
