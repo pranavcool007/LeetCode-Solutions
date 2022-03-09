@@ -71,7 +71,7 @@ vector<long long> printFirstNegativeInteger(long long int Arr[],
         if(j-i+1 < K){
             j++;
         }
-        else{
+        else if(j-i+1 == K){
             if(q.empty()) ans.push_back(0);
             else{
                 ans.push_back(q.front());
