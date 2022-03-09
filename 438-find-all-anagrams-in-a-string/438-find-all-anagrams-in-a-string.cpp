@@ -8,7 +8,7 @@ public:
         
 	    int K = pat.length();
 	    int count = mp.size();
-	    vector<int> ans;
+	    vector<int> ans;            // use vector instead of a int
 	    int i=0,j=0;
 	    while(j<txt.length()){
 	        if(mp.find(txt[j]) != mp.end()){
@@ -22,7 +22,7 @@ public:
 	        }
 	        else if (j-i+1 == K){
 	            if(count == 0){
-	                ans.push_back(i);
+	                ans.push_back(i);    // use i instead of ++ans in count occurences
 	            }
 	            if(mp.find(txt[i]) != mp.end()){
 	                ++mp[txt[i]];
