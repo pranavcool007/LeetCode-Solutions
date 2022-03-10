@@ -12,7 +12,8 @@ public:
             
             if(mpp.size()<k){
                 ++j;
-                if(j==n){
+                if(j==n){          // if input is [0] then only one type of fruit is to be
+                                   // picked
                     return j-i;
                 }
             }
