@@ -12,7 +12,7 @@ public:
             if(sum < target){
                 ++j;
             }
-            if (sum >= target){
+            else if (sum >= target){
                 while(sum >= target){
                     sum -= nums[i];
                     ++i;
