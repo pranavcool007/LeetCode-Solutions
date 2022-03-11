@@ -24,6 +24,6 @@ public:
             }
             ++j;
         }
-        return ans==INT_MIN?0:ans;;
+        return ans==INT_MIN?0:ans;
     }
 };
