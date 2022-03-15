@@ -39,9 +39,9 @@ public:
         ListNode* sec = slow->next;
         slow->next = NULL;
         
-        sec = reverseList(sec);
+        sec = reverseList(sec); // reverse the second part
         
-        while(sec!=NULL){
+        while(sec!=NULL){       // sec list will be always smaller
             ListNode* t1 = first->next;
             ListNode* t2 = sec->next;
             first->next = sec;
