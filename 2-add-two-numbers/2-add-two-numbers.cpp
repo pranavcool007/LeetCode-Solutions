@@ -14,7 +14,8 @@ public:
         ListNode* dummy = new ListNode(1);
         ListNode* prev = dummy;
         int carry = 0;
-        while(l1!=NULL or l2!=NULL or carry!=0){
+        while(l1!=NULL or l2!=NULL or carry!=0){ // loop will continue till
+                                        // l2 and l2 is reached null and carry = 0
             int sum = 0;
             if(l1!=NULL){
                 sum += l1->val;
