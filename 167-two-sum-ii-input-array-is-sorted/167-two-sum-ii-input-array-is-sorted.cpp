@@ -4,7 +4,7 @@ public:
         int i = 0;
         int j = numbers.size()-1;
         vector<int> ans;
-        while(i<j){
+        while(i<j){      // target sum logic
             if(numbers[i] + numbers[j] < target){
                 ++i;
             }
