@@ -6,11 +6,11 @@ public:
         int k = nums.size()-1;
         while(i <= k){
             if(nums[i] == 1){               // 1 will be instered into j to i-1 region
-                ++i;                        // as count of 1 is inc in this region ++i
+                ++i;                        // as 1's i ke left mein hote ++i
             }
             else if(nums[i] == 2){
                 swap(nums[i],nums[k]);      // 2 will be inserted into k+1 to end region
-                --k;                        // as count of 2 is inc in this region hence --k
+                --k;                        // as 2's k ke right mein hote --k
             }
             else{
                 swap(nums[i],nums[j]);
