@@ -8,6 +8,10 @@ public:
             if(nums[mid] == target){
                 return mid;
             }
+            if((nums[start] == nums[mid]) and (nums[end] == nums[mid])){
+                ++start;
+                --end;
+            }
             else if(nums[mid] <= nums[end]){
                 if(target > nums[mid] and target <= nums[end]){
                     start = mid+1;
