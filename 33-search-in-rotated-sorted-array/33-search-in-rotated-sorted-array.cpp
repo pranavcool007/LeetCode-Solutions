@@ -8,7 +8,7 @@ public:
             if(nums[mid] == target){
                 return mid;
             }
-            if((nums[start] == nums[mid]) and (nums[end] == nums[mid])){
+            if((nums[start] == nums[mid]) and (nums[end] == nums[mid])){   // trick
                 ++start;
                 --end;
             }
