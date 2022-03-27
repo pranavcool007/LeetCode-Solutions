@@ -6,7 +6,7 @@ public:
         for(auto point : points){
             int x = point[0];
             int y = point[1];
-            int dist = x*x + y*y;
+            int dist = x*x + y*y;  // better avoid sqrt , if needed use with                                                   float  
             maxh.push({dist,{x,y}});
             
             if(maxh.size() > k){
