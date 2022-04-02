@@ -18,12 +18,13 @@ class Solution {
 public:
     
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.size() == 0) return NULL;
+        if(lists.size() == 0) return NULL;     // for empty list []
         ListNode* dummy = new ListNode(0);
         ListNode* prev = dummy;
         priority_queue<ListNode*,vector<ListNode*>,comp> minh;
         for(auto list : lists){
-            if(list){
+            if(list){                          // we do not have to put NULL list in heap
+                                               // [[]]
                 minh.push(list);
             }
         }
