@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // same approach for Rearrange string k distance apart
     int leastInterval(vector<char>& tasks, int n) {
         unordered_map<char,int> mpp;
         for(auto task : tasks){
