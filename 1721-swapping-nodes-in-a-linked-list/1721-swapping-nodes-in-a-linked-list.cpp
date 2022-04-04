@@ -11,27 +11,49 @@
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
-        // O(N) approach
-        int i = 1;
-        ListNode* p1 = head;
-        while(i < k){
-            p1 = p1->next;
-            ++i;
+        // O(N) approach and noob approach
+    //     int i = 1;
+    //     ListNode* p1 = head;
+    //     while(i < k){
+    //         p1 = p1->next;
+    //         ++i;
+    //     }
+    //     int len = 0;
+    //     ListNode* temp = head;
+    //     while(temp->next != NULL){
+    //         ++len;
+    //         temp = temp->next;
+    //     }
+    //     i = 1;
+    //     int j = len-k+1;
+    //     ListNode* p2 = head;
+    //     while(i <= j){
+    //         ++i;
+    //         p2 = p2->next;
+    //     }
+    //     swap(p1->val,p2->val);
+    //     return head;
+    // }
+        
+    // 2 pointer and gap approach
+        ListNode* left = head;
+        ListNode* right = head;
+        ListNode* cur = head;
+        
+        int counter = 1;
+        while(cur != NULL)
+        {
+            if(counter < k){
+                left = left->next;
+            }
+            if(counter > k){
+                right = right->next;
+            }
+            ++counter;
+            cur = cur->next;
         }
-        int len = 0;
-        ListNode* temp = head;
-        while(temp->next != NULL){
-            ++len;
-            temp = temp->next;
-        }
-        i = 1;
-        int j = len-k+1;
-        ListNode* p2 = head;
-        while(i <= j){
-            ++i;
-            p2 = p2->next;
-        }
-        swap(p1->val,p2->val);
+        // swapping the values
+        swap(left->val,right->val);
         return head;
     }
 };
