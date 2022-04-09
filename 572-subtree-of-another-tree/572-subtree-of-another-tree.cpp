@@ -11,20 +11,30 @@
  */
 class Solution {
 public:
-       bool isSubtree(TreeNode* s, TreeNode* t) {
-        if(!s) return false;
-        return isSameTree(s,t) || isSubtree(s->left,t) || isSubtree(s->right,t);
-    }
-    
-    //Leetcode 100
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL && q==NULL)
+    bool sametree(TreeNode* root1 , TreeNode* root2){
+        if(root1 == NULL and root2 == NULL) return true;
+        if(root1 == NULL or root2 == NULL) return false;
+        
+        if(root1->val != root2->val){
+            return false;
+        }
+        bool l = sametree(root1->left,root2->left);
+        bool r = sametree(root1->right,root2->right);
+        
+        if(l and r){
             return true;
-        if(p==NULL || q==NULL)
-            return false;
-        if(p->val == q->val)
-            return isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
-        else
-            return false;
+        }
+        return false;
+        
+    }
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        if(root == NULL) return false;
+        bool main = sametree(root,subRoot);
+        if(main){
+            return true;
+        }
+        return (isSubtree(root->left,subRoot) or 
+            isSubtree(root->right,subRoot));
+        
     }
 };
