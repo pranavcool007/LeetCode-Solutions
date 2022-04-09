@@ -18,6 +18,19 @@ public:
         int l = minDepth(root->left);
         int r = minDepth(root->right);
         
+        /* for test case like 
+                 1
+                  \
+                   2
+                    \
+                     3
+                      \
+                       4
+                       
+          the min height logic of 1 + min(l,r) will fail , if l or r == 0 return the
+          non zero value of other subtree + 1;
+        */
+        
         if(l == 0 or r == 0){
             if(l == 0){
                 return r + 1;
