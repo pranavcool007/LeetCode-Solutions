@@ -11,18 +11,20 @@
  */
 class Solution {
 public:
-    stack<TreeNode*> s;
+    bool dfs(TreeNode* root,int sum,int target_sum){
+        if(root == NULL) return false;
+        
+        sum += root->val;
+        if(root->left == NULL and root->right == NULL){
+            return sum == target_sum;
+        }
+        bool l = dfs(root->left,sum,target_sum);
+        bool r = dfs(root->right,sum,target_sum);
+        
+        return (l or r);
+    }
     bool hasPathSum(TreeNode* root, int targetSum) {
-        if(root == NULL){  
-            return false;
-        }
-        else if(root->left == NULL and root->right == NULL and targetSum - root->val == 0){
-            return true;
-        }
-        else{
-            bool l = hasPathSum(root->left,targetSum-root->val);
-            bool r = hasPathSum(root->right,targetSum-root->val);
-            return l or r;
-        }
+        bool ans = dfs(root,0,targetSum);
+        return ans;
     }
 };
