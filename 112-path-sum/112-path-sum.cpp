@@ -9,6 +9,12 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+/* we will do inorder traversal and keep adding the currnode val and call left and right
+   subtree, if we have reached the leaf node then check sum == targetsum , also every call
+   we keep on saving the sum till the current node except leaf node.
+*/
+
 class Solution {
 public:
     bool dfs(TreeNode* root,int sum,int target_sum){
