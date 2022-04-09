@@ -12,6 +12,7 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
+        //base cases
         if(p == NULL and q==NULL){
             return true;
         } 
@@ -19,12 +20,15 @@ public:
             return false;
         }
         
+        //check root node
         if(p->val != q->val){
             return false;
         }
+        // call lst and rst
         bool l = isSameTree(p->left,q->left);
         bool r = isSameTree(p->right,q->right);
         
+        // if both subtrees are same then true otherwise false
         if(l and r){
             return true;
         }
