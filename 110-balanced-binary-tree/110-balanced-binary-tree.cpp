@@ -11,33 +11,32 @@
  */
 class Solution {
 public:
-    bool isBalanced(TreeNode* root) {
-    
-        if (root == NULL){
-            return true;
-        }
-        int h = Depth(root);
-        if(h!=-1){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    
-    int Depth(TreeNode* root){
-        if(root == NULL){
-            return 0;
-        }
-        int lh = Depth(root->left);
-        if(lh == -1) return -1;
-        int rh = Depth(root->right);
-        if(rh == -1) return -1;
+    int treeDepth(TreeNode* root){
+        if(root == NULL) return 0;
+        if(root->left == NULL and root->right == NULL) return 1;
         
-        if(abs(lh-rh) > 1){
+        int l = treeDepth(root->left);
+        int r = treeDepth(root->right);
+        
+        if(abs(l-r) > 1) {
             return -1;
         }
         
-        return 1+max(lh,rh);
+        if(l == -1 or r == -1){
+            return -1;
+        }
+        else{
+            return 1 + max(l,r);
+        }
+        
+    }
+    bool isBalanced(TreeNode* root) {
+        int val = treeDepth(root);
+        if(val == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 };
