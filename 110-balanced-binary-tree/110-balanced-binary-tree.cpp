@@ -11,6 +11,12 @@
  */
 class Solution {
 public:
+    /* use height of the tree logic if tree is balanced we will output the height
+       of the tree else we will output -1.
+       only crux is to check if there is any unbalanced subtree return -1 and keep 
+       propagating this -1 to the root of the tree
+     */
+    
     int treeDepth(TreeNode* root){
         if(root == NULL) return 0;
         if(root->left == NULL and root->right == NULL) return 1;
