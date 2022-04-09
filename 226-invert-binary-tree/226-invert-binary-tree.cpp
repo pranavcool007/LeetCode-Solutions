@@ -12,18 +12,13 @@
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
-        // mirror image of a binary tree
-        // postorder traversal and swapping of left and right pointers
         if(root == NULL) return NULL;
-        
-        TreeNode* l = invertTree(root->left);
-        TreeNode* r = invertTree(root->right);
-        
-        // swapping of pointers
-        
-        TreeNode* temp = root->left;
+        TreeNode* node = root->left;
         root->left = root->right;
-        root->right = temp;
+        root->right = node;
+        
+        invertTree(root->right);
+        invertTree(root->left);
         
         return root;
     }
