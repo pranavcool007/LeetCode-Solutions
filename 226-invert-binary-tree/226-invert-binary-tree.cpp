@@ -11,6 +11,10 @@
  */
 class Solution {
 public:
+    /* just swap the left leftsubtree with right and vise versa for main tree and repeat 
+    recursively for left subtree and right subtree 
+    */
+    
     TreeNode* invertTree(TreeNode* root) {
         if(root == NULL) return NULL;
         TreeNode* node = root->left;
