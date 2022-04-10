@@ -12,6 +12,7 @@
 class Solution {
 public:
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        // base cases
         if(root1 == NULL and root2 == NULL) return NULL;
         
         if(root1 != NULL and root2 == NULL){
@@ -21,6 +22,7 @@ public:
             return root2;
         }
         
+        // make a new node and recursively call for lst and rst
         int val = root2->val + root1->val;
         TreeNode* node = new TreeNode(val);
         
