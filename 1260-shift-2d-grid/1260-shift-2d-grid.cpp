@@ -7,10 +7,10 @@ public:
         
         for(int i=0; i<m; ++i){
             for(int j=0; j<n; ++j){
-                int arr_val = i*n + j;
-                int shifted = (arr_val + k) % (m*n);
-                int new_row = shifted/n;
-                int new_col = shifted%n;
+                int arr_val = i*n + j;      // 2d to 1d convert
+                int shifted = (arr_val + k) % (m*n);  // shifting by k on 1d array
+                int new_row = shifted/n;    // 2d row of 1d array
+                int new_col = shifted%n;    // 2d col of 1d array
                 ans[new_row][new_col] = grid[i][j];
             }
         }
