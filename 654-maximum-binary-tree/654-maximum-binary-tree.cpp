@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    // O(n^2) solution as n calls will be made and each will undergo loop from start to end(worst case O(n) )
+    
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
         if(nums.size() == 0) return NULL;
     
