@@ -11,33 +11,15 @@
  */
 class Solution {
 public:
-    // brute force method
-    void inorder(TreeNode* root,vector<int> & inor){
-        if(root == NULL){
-            return;
-        }
-        inorder(root->left,inor);
-        inor.push_back(root->val);
-        inorder(root->right,inor);
-    }
-    
+    unordered_map<int,int> mpp;
+    // similar to 2-sum method here just put in unordered map without index
     bool findTarget(TreeNode* root, int k) {
-        vector<int> inor;   // will contain sorted inorder traversal
-        inorder(root,inor);
         
-        int i = 0;
-        int j = inor.size()-1;
-        while(i<j){
-            if(inor[i]+inor[j] == k){
-                return true;
-            }
-            else if(inor[i]+inor[j] > k){
-                --j;
-            }
-            else{
-                ++i;
-            }   
-        }
-        return false;
+        if(root == NULL) return false;
+        if(mpp.find(k - root->val) != mpp.end()) return true;
+        mpp[root->val]++;
+        bool l = findTarget(root->left,k);
+        bool r = findTarget(root->right,k);
+        return l or r;
     }
 };
