@@ -11,23 +11,19 @@ class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root == NULL) return NULL;
-        
-        if(root == p or root ==q) return root;
-        
+        if(root->val == p->val or root->val == q->val){
+            return root;
+        }
         TreeNode* left = lowestCommonAncestor(root->left,p,q);
         TreeNode* right = lowestCommonAncestor(root->right,p,q);
         
-        if(left!=NULL and right!=NULL){
+        if(left and right){
             return root;
         }
-        else if(left!=NULL and right == NULL){
-            return left;
+        else if(left or right){
+            return left != NULL?left:right;
         }
-        else if(right!=NULL and left == NULL){
-            return right;
-        }
-        else{
-            return NULL;
-        }
+        return NULL;                                    // left and right dono subtrees
+                                                    // se NULL mila iska mtlb hai hi nhi LCA
     }
 };
