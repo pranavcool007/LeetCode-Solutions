@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+/* as constraints are node val can be INT_MAX or INT_MIN we have to take larger range to get    the code to work. Also for recursion imagine one node whose val is in range then to return    true , null values must be returned with true as base case.   */
+    
     bool isValidBST(TreeNode* root) {
         long min = LONG_MIN;
         long max = LONG_MAX;
@@ -29,7 +31,5 @@ public:
         else{
             return false;
         }
-        
-    }
-        
+    }   
 };
