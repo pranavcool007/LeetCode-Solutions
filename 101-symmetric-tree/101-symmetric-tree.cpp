@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// just make a helper func and pass two pointers left and right subtrees , logic is same as      ques same tree
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
