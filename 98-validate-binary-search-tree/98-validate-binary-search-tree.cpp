@@ -11,21 +11,25 @@
  */
 class Solution {
 public:
-    void inorder_tr(TreeNode* root,vector<int> &inorder){
-        if(root == NULL) return;
-        inorder_tr(root->left,inorder);
-        inorder.push_back(root->val);
-        inorder_tr(root->right,inorder);
-    }
     bool isValidBST(TreeNode* root) {
-        vector<int> inorder;
-        inorder_tr(root,inorder);
-        
-        for(int i=0; i<inorder.size()-1; ++i){
-            if(inorder[i]>=inorder[i+1]){       // if 2 values are same then also its not bst
-                return false;
-            }
-        }
-        return true;
+        long min = LONG_MIN;
+        long max = LONG_MAX;
+        bool ans = helper(min,max,root);
+        return ans;
     }
+    
+    bool helper(long min,long max,TreeNode* root){
+        if(root == NULL) return true;
+        if(root->val < max and root->val > min){
+            
+           bool lst = helper(min,root->val,root->left);
+           bool rst = helper(root->val,max,root->right);
+            return lst and rst;
+        }
+        else{
+            return false;
+        }
+        
+    }
+        
 };
