@@ -19,6 +19,8 @@ public:
     void helper(TreeNode* root){
         if(root == NULL) return;
         
+// check wether root can be a grandparent if yes then add its grandparents(if existed) values
+//   to the sum 
         if(root->val % 2 == 0){
             if(root->left and root->left->left){
                 sum += root->left->left->val;
