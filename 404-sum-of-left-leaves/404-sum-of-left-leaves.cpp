@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// inorder to detect a leaf is left leaf use flag ,whenever going to left subtree make flag =    true and whenever going to right subtree make flag = false.
 class Solution {
 public:
     int sumOfLeftLeaves(TreeNode* root) {
