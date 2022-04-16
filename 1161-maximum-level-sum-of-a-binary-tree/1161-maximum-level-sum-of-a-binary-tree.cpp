@@ -9,6 +9,12 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+/* NOTE : sum will be INT_MIN as we are comparing each level sum, if taken 0 and all level
+          sums are -ves then this case will fail, INT_MIN will keep a note of it.
+*/
+
 class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
