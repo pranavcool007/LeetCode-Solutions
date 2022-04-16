@@ -9,7 +9,14 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+/* in this problem we will do reverse inorder traversal of bst in which we do sum of all nos
+   greater than root, then add the sum with the root and update sum. We keep on maintain the
+   current sum of nodes travelled so far.
+   
+   same as inorder jismein agr left ko travel krte then root ko print krte then right mein 
+   travel krte, jo kaam root pe hua voh recursively sabhi nodes pe hua.
+*/   
+   class Solution {
 public:
     int sum = 0;
     TreeNode* convertBST(TreeNode* root) {
