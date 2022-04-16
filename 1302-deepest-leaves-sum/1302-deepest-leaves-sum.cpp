@@ -9,6 +9,14 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/* For O(n) space and time complex, make a map with all the nodes val and their level, take 
+    max level node val and add it.
+    
+    For O(n) time and only recursion space , make a var (call by ref)deepest_l that will keep
+    track of deepest leaf node , node if c_level == deepest_l then update ans by adding that 
+    leaf val and if c_level > deepest_l reset ans to 0 and then add the root val
+*/
+
 class Solution {
 public:
     int deepestLeavesSum(TreeNode* root) {
