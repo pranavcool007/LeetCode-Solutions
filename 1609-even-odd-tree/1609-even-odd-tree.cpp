@@ -12,24 +12,51 @@
 class Solution {
 public:
     bool isEvenOddTree(TreeNode* root) {
-    vector<TreeNode*> q{root};
-    int l = -1;
-    while (!q.empty()) {
-        ++l;
-        int val = 0;
-        vector<TreeNode*> q1;
-        for (auto n : q)
-            if (n != nullptr) {
-                if (n->val % 2 == l % 2)
-                    return false;
-                if (val != 0 && ((l % 2 && val <= n->val) || (!(l % 2) && val >= n->val)))
-                    return false;           
-                val = n->val;
-                q1.push_back(n->left);
-                q1.push_back(n->right);
+        queue<TreeNode*> q;
+        q.push(root);
+        int level_no = -1;
+        
+        while(q.size() > 0){
+            int count = q.size();
+            ++level_no;
+            vector<int> level;
+            
+            for(int i=0; i<count; ++i){
+                TreeNode* node = q.front();
+                q.pop();
+                if(level_no % 2 == 0){
+                    if(node->val % 2 == 0){
+                        return false;
+                    }
+                }else{
+                    if(node->val % 2 == 1){
+                        return false;
+                    }
+                }
+                level.push_back(node->val);
+                if(node->left){
+                    q.push(node->left);
+                }
+                if(node->right){
+                    q.push(node->right);
+                }
             }
-        swap(q, q1);
+            if(level_no % 2 == 0){
+                for(int i=0; i<count-1; ++i){
+                    if(level[i+1] <= level[i]){
+                        return false;
+                    }
+            }
+            }
+            else {
+                for(int i=0; i<count-1; ++i){
+                    if(level[i+1] >= level[i]){
+                        return false;
+                    }
+                }
+            }
+            
+        }
+        return true;
     }
-    return true;
-}
 };
