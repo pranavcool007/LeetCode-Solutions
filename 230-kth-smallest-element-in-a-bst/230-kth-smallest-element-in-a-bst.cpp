@@ -14,15 +14,17 @@ public:
     int count = 0;
     int ans;
     int kthSmallest(TreeNode* root, int k) {
-        // inorder recursive
-        if(root == NULL) return 0;
+        helper(root,k);
+        return ans;
+    }
+    void helper(TreeNode* root,int k){
+        if(root == NULL) return;
         
-        kthSmallest(root->left,k);
-        ++count;
+        helper(root->left,k);
+        count++;
         if(count == k){
             ans = root->val;
         }
-        kthSmallest(root->right,k);
-        return ans;
+        helper(root->right,k);
     }
 };
