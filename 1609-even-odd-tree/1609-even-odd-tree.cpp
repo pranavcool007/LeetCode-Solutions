@@ -20,31 +20,26 @@ public:
             int count = q.size();
             ++level_no;
             vector<int> level;
+            int prev = level_no % 2 ? INT_MAX : INT_MIN;
             
             for(int i=0; i<count; ++i){
                 TreeNode* node = q.front();
                 q.pop();
-                if(level_no % 2 == node->val % 2){
-                    return false;
+                
+                if(level_no % 2 == 0){
+                    if(node->val % 2 == 0 or node->val <= prev){
+                        return false;
+                    }
+                } else {
+                    if(node->val % 2 or node->val >= prev){
+                        return false;
+                    }
                 }
-                level.push_back(node->val);
+                prev = node->val;
                 if(node->left) q.push(node->left);
                 if(node->right) q.push(node->right);
             }
-            if(level_no % 2 == 0){
-                for(int i=0; i<count-1; ++i){
-                    if(level[i+1] <= level[i]){
-                        return false;
-                    }
-                }
-            }
-            else {
-                for(int i=0; i<count-1; ++i){
-                    if(level[i+1] >= level[i]){
-                        return false;
-                    }
-                }
-            }
+            
             
         }
         return true;
