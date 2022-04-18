@@ -24,29 +24,19 @@ public:
             for(int i=0; i<count; ++i){
                 TreeNode* node = q.front();
                 q.pop();
-                if(level_no % 2 == 0){
-                    if(node->val % 2 == 0){
-                        return false;
-                    }
-                }else{
-                    if(node->val % 2 == 1){
-                        return false;
-                    }
+                if(level_no % 2 == node->val % 2){
+                    return false;
                 }
                 level.push_back(node->val);
-                if(node->left){
-                    q.push(node->left);
-                }
-                if(node->right){
-                    q.push(node->right);
-                }
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
             }
             if(level_no % 2 == 0){
                 for(int i=0; i<count-1; ++i){
                     if(level[i+1] <= level[i]){
                         return false;
                     }
-            }
+                }
             }
             else {
                 for(int i=0; i<count-1; ++i){
