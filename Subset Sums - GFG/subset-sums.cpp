@@ -9,26 +9,22 @@ public:
     vector<int> subsetSums(vector<int> arr, int N)
     {
         vector<int> sums;
-        vector<int> c_sub;
-        helper(0,c_sub,sums,arr);
+        int c_sum;
+        helper(0,c_sum,sums,arr);
         return sums;
     }
     
-    void helper(int idx,vector<int> &c_sub,vector<int> &sums,vector<int> &nums){
+    void helper(int idx,int &c_sum,vector<int> &sums,vector<int> &nums){
         if(idx == nums.size()){
-            int sum = 0;
-            for(auto i: c_sub){
-                sum += i;
-            }
-            sums.push_back(sum);
+            sums.push_back(c_sum);
             return;
         }
         
-        c_sub.push_back(nums[idx]);
-        helper(idx+1,c_sub,sums,nums);
-        c_sub.pop_back();
+        c_sum += nums[idx];
+        helper(idx+1,c_sum,sums,nums);
+        c_sum -= nums[idx];
         
-        helper(idx+1,c_sub,sums,nums);
+        helper(idx+1,c_sum,sums,nums);
     }
 };
 
