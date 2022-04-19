@@ -9,6 +9,11 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+/* as its bst go through the inorder and keep taking the diff of curr and prev nodes, the min 
+   value of all these diff will be ans
+*/
+
 class Solution {
 public:
     int ans = INT_MAX;
