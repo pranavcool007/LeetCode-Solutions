@@ -9,71 +9,62 @@
  */
 class Solution {
 public:
-    void parent_finder(TreeNode* root,unordered_map<TreeNode*,TreeNode*> &parent_map) 
-    {
+    void parent_find(TreeNode* root,unordered_map<TreeNode*,TreeNode*> &parent){
+        if(root == NULL) return;
         queue<TreeNode*> q;
         q.push(root);
-        while(!q.empty()){
+        
+        while(q.size() > 0){
             TreeNode* node = q.front();
             q.pop();
-            
             if(node->left){
-                parent_map[node->left] = node;
+                parent[node->left] = node;
                 q.push(node->left);
-            }
+            } 
             if(node->right){
-                parent_map[node->right] = node;
+                parent[node->right] = node;
                 q.push(node->right);
-            }
+            } 
         }
     }
-    
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        unordered_map<TreeNode*,TreeNode*> parent_map;  // pass by ref to find parents 
-        parent_finder(root,parent_map);                 // of every node
-    
-        unordered_map<TreeNode*,int> visited;           // visited map bettr to take bool
+        unordered_map<TreeNode*,TreeNode*> parent;
+        parent_find(root,parent);
+        
         queue<TreeNode*> q;
-        q.push(target);                  // initially put target in the q
-        ++visited[target];               // make target as visited
+        unordered_map<TreeNode*,bool> visited;
+        q.push(target);
+        visited[target] = true;
         int dist = 0;
         
-        while(!q.empty()){
-            
-            if(dist == k){
-                break;
-            }else{
-                dist++;
-            }
-            
-            int size = q.size();       // iterate for all nodes in q 
-                                       // after for loop all distance = dist nodes will be                                             present in the queue
-            
-            for(int i = 0;i < size; ++i){
+        while(q.size() > 0){
+            if(dist == k) break;
+            else dist++;
+            int count = q.size();
+            for(int i=0; i<count; ++i){
                 TreeNode* node = q.front();
                 q.pop();
-                
                 if(node->left and !visited[node->left]){
-                    ++visited[node->left];
                     q.push(node->left);
-                }
+                    visited[node->left] = true;
+                } 
                 if(node->right and !visited[node->right]){
-                    ++visited[node->right];
                     q.push(node->right);
-                }
-                if(parent_map[node] and !visited[parent_map[node]]){
-                    ++visited[parent_map[node]];
-                    q.push(parent_map[node]);
-                }
-            }
+                    visited[node->right] = true;
+                } 
+                if(parent[node] and !visited[parent[node]]){
+                    q.push(parent[node]);
+                    visited[parent[node]] = true;
+                } 
+                    
         }
+    }
         vector<int> ans;
-        while(!q.empty()){
+        while(q.size() > 0){
             TreeNode* node = q.front();
             q.pop();
             ans.push_back(node->val);
         }
         return ans;
-        
     }
 };
