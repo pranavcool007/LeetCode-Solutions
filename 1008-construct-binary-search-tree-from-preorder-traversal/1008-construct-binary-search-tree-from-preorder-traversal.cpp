@@ -12,20 +12,30 @@
 class Solution {
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-
-        int i = 0;
-        TreeNode* root = buildBST(preorder,i,INT_MAX);
+        vector<int> inorder(preorder);
+        sort(inorder.begin(),inorder.end());
+        unordered_map<int,int> inmap;
+        
+        for(int i=0; i<inorder.size(); ++i){
+            inmap[inorder[i]] = i;
+        }
+        TreeNode* root = treeBuilder(inorder,0,inorder.size()-1,preorder,0,preorder.size()-1,inmap);
         return root;
     }
     
-    TreeNode* buildBST(vector<int> &pl,int &i,int bound){ // pl = preorder_list
+    TreeNode* treeBuilder(vector<int> &inorder,int instart,int inend,vector<int> &preorder,
+                          int prestart,int preend,unordered_map<int,int> &inmap)
+    {
+        if(instart > inend || prestart > preend) return NULL;
         
-        if(i == pl.size() or pl[i] > bound) return NULL;  // no ele to insert
+        TreeNode* root = new TreeNode(preorder[prestart]);
+        int inRoot = inmap[preorder[prestart]];
+        int left = inRoot - instart;
         
-        TreeNode* root = new TreeNode(pl[i++]);    // make root 
-        root->left = buildBST(pl,i,root->val);     // make lsb and rsb , then connect it
-        root->right = buildBST(pl,i,bound);        // to the root
-        
+        root->left = treeBuilder(inorder,instart,inRoot-1,preorder,prestart + 1,
+                                 prestart + left,inmap);
+        root->right = treeBuilder(inorder,inRoot+1,inend,preorder,prestart+left+1,
+                                  preend,inmap);
         return root;
     }
 };
