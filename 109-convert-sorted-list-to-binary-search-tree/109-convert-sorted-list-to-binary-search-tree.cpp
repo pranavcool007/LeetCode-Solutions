@@ -19,10 +19,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/* 
+   find the middle using fast and slow pointers, make new node of the found middle element
+   now cut the list into left part and right part by making prev = NULL. Call the same fun
+   for the left subtree(left sublist) and for the right subtree(right sublist).
+*/
+
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
-        if(head == NULL) return NULL;
+        // base cases when no nodes are left or only one node in the left or right sublist
+        if(head == NULL) return NULL;      
         if(head->next == NULL) return new TreeNode(head->val);
         
         ListNode* slow = head;
