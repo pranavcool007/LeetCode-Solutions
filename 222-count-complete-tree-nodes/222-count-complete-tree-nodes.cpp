@@ -13,29 +13,32 @@ class Solution {
 public:
     int countNodes(TreeNode* root) {
         if(root == NULL) return 0;
-        int lh,rh;
         
-        lh = leftheight(root->left);
-        rh = rightheight(root->right);
+        int left_h = leftH(root->left);
+        int right_h = rightH(root->right);
         
-        if(lh == rh) return (1<<(1+lh))-1;             // 1*(2^lh+1)
-         
-        return 1 + countNodes(root->left) + countNodes(root->right);
-    }
-    
-    int leftheight(TreeNode* node){
-        int h=0;
-        while(node){
-            ++h;
-            node = node->left;
+        if(left_h == right_h) return (1 << left_h + 1)-1;
+        else{
+            int left_n = countNodes(root->left);
+            int right_n = countNodes(root->right);
+            return 1 + left_n + right_n;
         }
-        return h;
     }
-    int rightheight(TreeNode* node){
-        int h=0;
+    int rightH(TreeNode* root){
+        int h = 0;
+        TreeNode* node = root;
         while(node){
             ++h;
             node = node->right;
+        }
+        return h;
+    }
+    int leftH(TreeNode* root){
+        int h = 0;
+        TreeNode* node = root;
+        while(node){
+            ++h;
+            node = node->left;
         }
         return h;
     }
