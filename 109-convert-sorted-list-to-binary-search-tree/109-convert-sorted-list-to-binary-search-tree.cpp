@@ -21,23 +21,22 @@
  */
 class Solution {
 public:
-    TreeNode* bst_transform(vector<int> &nums,int l,int r){
-        if(nums.size() == 0) return NULL;
-        if(l > r) return NULL;
-        
-        int mid = l + (r-l)/2;
-        TreeNode* root = new TreeNode(nums[mid]);
-        root->left = bst_transform(nums,l,mid-1);
-        root->right = bst_transform(nums,mid+1,r);
-        return root;
-    }
     TreeNode* sortedListToBST(ListNode* head) {
-        vector<int> nums;
-        ListNode* temp = head;
-        while(temp){
-            nums.push_back(temp->val);
-            temp = temp->next;
+        if(head == NULL) return NULL;
+        if(head->next == NULL) return new TreeNode(head->val);
+        
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = NULL;
+        while(fast != NULL and fast->next != NULL){
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        return bst_transform(nums,0,nums.size()-1);
+        prev->next = NULL;
+        TreeNode* root = new TreeNode(slow->val);
+        root->left = sortedListToBST(head);
+        root->right = sortedListToBST(slow->next);
+        return root;
     }
 };
