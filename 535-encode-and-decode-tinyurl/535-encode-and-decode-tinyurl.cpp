@@ -1,20 +1,27 @@
+/* logic to convert the given longUrl to a unique no , for eg if 3 url are there like 
+   "leetcode" = 1 , "google" = 2 "twitter" = 3.
+   this can be easily done by mapping the long url to a no which is cal as size(enocdemap)+1
+   short url will be baseurl + no
+   we will map shorturl to longurl and longurl to shorturl in a map.
+ */ 
 class Solution {
 public:
-        unordered_map<string,int> encodeMap;
-        unordered_map<int,string> decodeMap;
+    unordered_map<string,string> encodeMap;
+    unordered_map<string,string> decodeMap;
+    string base = "http://tinyurl.com/";
     // Encodes a URL to a shortened URL.
     string encode(string longUrl) {
         if(encodeMap.find(longUrl) == encodeMap.end()){
-            int shortURL = encodeMap.size() + 1;
+            string shortURL = base + to_string(encodeMap.size() + 1);
             encodeMap[longUrl] = shortURL;
             decodeMap[shortURL] = longUrl;
         }
-        return to_string(encodeMap[longUrl]);
+        return encodeMap[longUrl];
     }
 
     // Decodes a shortened URL to its original URL.
     string decode(string shortUrl) {
-        return decodeMap[stoi(shortUrl)];
+        return decodeMap[shortUrl];
     }
 };
 
