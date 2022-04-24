@@ -19,7 +19,7 @@ public:
             res = to_string(total) + res;
         }
         if(carry){
-            res = to_string(carry) + res;
+            res = "1" + res;
         }
         return res;
     }
