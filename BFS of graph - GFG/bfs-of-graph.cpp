@@ -13,20 +13,18 @@ class Solution {
         q.push(0);
         visited[0] = 1;
         while(q.size() > 0){
-                    
-                    int u = q.front();
-                    q.pop();
-                    ans.push_back(u);
-                    for(auto v : adj[u]){
-                        if(!visited[v]){
-                            q.push(v);
-                            visited[v] = 1;
+            int u = q.front();
+            q.pop();
+            ans.push_back(u);
+            for(auto v : adj[u]){
+                if(!visited[v]){
+                    q.push(v);
+                    visited[v] = 1;
                 }
             }
         }
         return ans;
         }
-        
 };
 
 // { Driver Code Starts.
