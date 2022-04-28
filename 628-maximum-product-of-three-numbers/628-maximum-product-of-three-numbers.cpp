@@ -7,6 +7,7 @@ public:
         return max(nums[0]*nums[1]*nums[n-1],nums[n-1]*nums[n-2]*nums[n-3]);
     }
 */
+// In this case k is constant and doesn't scale with n, so this usage is O(n). O(nlogk)
     int maximumProduct(vector<int>& nums) {
         priority_queue<int> maxh;
         priority_queue<int,vector<int>,greater<int>> minh;
