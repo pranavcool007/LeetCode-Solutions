@@ -1,3 +1,7 @@
+/* we start i,j matrix loop and do dfs traversal if cell == 1, this will mark the complete 
+   island (which is formed by lands connected vertically or horizontally) with 2. 2 
+   represent visited node. everytime bfs is called on a cell in i,j loop inc count
+*/
 class Solution {
 public:
     void dfs(int row,int col,vector<vector<char>>& grid){
