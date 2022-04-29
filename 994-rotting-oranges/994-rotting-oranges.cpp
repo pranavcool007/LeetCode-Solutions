@@ -9,7 +9,7 @@ public:
     int orangesRotting(vector<vector<int>>& grid) {
         int rows = grid.size();
         int cols = grid[0].size();
-        int rotten_c = 0;
+        int fresh_or = 0;
         queue<pair<int,int>> q;
         for(int i=0; i<rows; ++i)
         {
@@ -17,10 +17,13 @@ public:
             {
                 if(grid[i][j] == 2){
                     q.push({i,j});
-                    ++rotten_c;
+                }
+                if(grid[i][j] == 1){
+                    ++fresh_or;
                 }
             }
         }
+        if(fresh_or == 0) return 0;
         int time = 0;
         while(!q.empty()){
             int count = q.size();
@@ -33,31 +36,26 @@ public:
                 if(isValid(row+1,col,rows,cols,grid)){
                     q.push({row+1,col});
                     grid[row+1][col] = 2;
+                    --fresh_or;
                 }
                 if(isValid(row-1,col,rows,cols,grid)){
                     q.push({row-1,col});
                     grid[row-1][col] = 2;
+                    --fresh_or;
                 }
                 if(isValid(row,col+1,rows,cols,grid)){
                     q.push({row,col+1});
                     grid[row][col+1] = 2;
+                    --fresh_or;
                 }
                 if(isValid(row,col-1,rows,cols,grid)){
                     q.push({row,col-1});
                     grid[row][col-1] = 2;
+                    --fresh_or;
                 }
             }
             
         }
-        // checking if any fresh orange is present after processing the grid
-        for(int i=0; i<rows; ++i){
-            for(int j=0; j<cols; ++j){
-                if(grid[i][j] == 1){
-                    return -1;
-                }
-            }
-        }
-        if(rotten_c == 0) return 0;
-        return time-1;
+        return fresh_or == 0? time-1 : -1;
     }
 };
